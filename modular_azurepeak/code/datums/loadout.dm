@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Tabard"
 	path = /obj/item/clothing/cloak/tabard
 
-/datum/loadout_item/tabard
+/datum/loadout_item/guard_tabard
 	name = "Guard Tabard"
 	path = /obj/item/clothing/cloak/stabard/guard
 
