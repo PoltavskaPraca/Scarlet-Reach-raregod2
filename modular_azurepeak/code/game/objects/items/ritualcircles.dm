@@ -546,7 +546,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 /obj/structure/ritualcircle/graggar
 	name = "Rune of Violence"
 	desc = "A Holy Rune of Graggar."
-	// icon_state = "graggar_chalky"
+	icon_state = "graggar_chalkiest"
 	var/graggarrites = list("Rite of Armaments")
 
 /obj/structure/ritualcircle/graggar/attack_hand(mob/living/user)
