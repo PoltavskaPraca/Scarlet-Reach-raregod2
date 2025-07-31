@@ -437,7 +437,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 				if(do_after(user, 50))
 					user.say("ZIZO! ZIZO! HEED MY CALL!!")
 					if(do_after(user, 50))
-						user.say("ZIZO! ZIZO!  MAKE THEM LEARN AND KNOW!!")
+						user.say("ZIZO! ZIZO! LET THEM KNOW YOUR WORKS!!")
 						if(do_after(user, 50))
 							icon_state = "zizo_active"
 							zizoconversion(target) // removed CD bc it's gonna be coal to sit there and wait for it to go off rite cooldown, this one is purely social in its nature
@@ -499,30 +499,36 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_CABAL))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE ALREADY OF THE CABAL"))
 		return
-	var/yesorno = list("SUBMISSION", "DEATH")
-	var/dialoguechoice = input(target, "SUBMISSION OR DEATH", src) as null|anything in yesorno
-	switch(dialoguechoice) // fuuck
-		if("SUBMISSION")
-			to_chat(target, span_warning("Images of Her Work most grandoise flood your mind, as the heretical knowledge is seared right into your very body and soul."))
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-			target.emote("Agony")
-			playsound(loc, 'sound/combat/newstuck.ogg', 50)
-			loc.visible_message(span_cult("Great hooks come from the rune, embedding into [target]'s ankles, pulling them onto the rune. Then, into their wrists. [target] is convulsing on the ground, as they finally accept the truth. "))
-			spawn(20)
-				playsound(target, 'sound/health/slowbeat.ogg', 60)
-				playsound(loc, 'sound/ambience/creepywind.ogg', 80)
-				var/previous_level = target.devotion.level
-				target.set_patron(new /datum/patron/inhumen/zizo) //lowkey wanna give convertees like 4-8 learning points for spells in addition to that, +2 arcyne skill levels
-				target.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-				target.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
-				target.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-				target.change_stat("intelligence", 1)
-				target.change_stat("perception", 1)
-				spawn(40)
-					playsound(loc, 'sound/misc/boatleave.ogg', 100)
-					to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will will fight in the name of Progress."))
+	//var/yesorno = list("SUBMISSION", "DEATH")
+	//var/dialoguechoice = input(target, "SUBMISSION OR DEATH", src) as null|anything in yesorno
+	var/prompt = alert(target, "SUBMISSION OR DEATH",, "SUBMISSION", "DEATH")
+	//switch(dialoguechoice) // fuuck
+	if(prompt == "SUBMISSION")
+		to_chat(target, span_warning("Images of Her Work most grandoise flood your mind, as the heretical knowledge is seared right into your very body and soul."))
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.emote("Agony")
+		playsound(loc, 'sound/combat/newstuck.ogg', 50)
+		loc.visible_message(span_cult("Great hooks come from the rune, embedding into [target]'s ankles, pulling them onto the rune. Then, into their wrists. [target] is convulsing on the ground, as they finally accept the truth. "))
+		spawn(20)
+			playsound(target, 'sound/health/slowbeat.ogg', 60)
+			playsound(loc, 'sound/ambience/creepywind.ogg', 80)
+			//target.set_patron(new /datum/patron/inhumen/zizo) //lowkey wanna give convertees like 4-8 learning points for spells in addition to that, +2 arcyne skill levels
+			target.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			target.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+			target.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+			target.change_stat("intelligence", 1)
+			target.change_stat("perception", 1)
+			spawn(40)
+				playsound(loc, 'sound/misc/boatleave.ogg', 100)
+				to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will will fight in the name of Progress."))
+				if(target.devotion == null) // why can't it just go 'huh null? yeah ok dont care let's continue' why do i have to write this
+					target.set_patron(new /datum/patron/inhumen/zizo)
+					return
+				else
+					var/previous_level = target.devotion.level // IF NULL JUST MOVE ON WHAT'S YOUR PROBLEM HOLY FUCKING SHIT!!!
+					target.set_patron(new /datum/patron/inhumen/zizo) //now you might ask why we get previous_level variable before switching le patron. reason is when swapping patrons it completely fucks up devotion data for people
 					var/datum/devotion/C = new /datum/devotion(target, target.patron)
 					if(previous_level == 4)
 						target.mind?.RemoveAllMiracles()
@@ -536,13 +542,13 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					if(previous_level == 1)
 						target.mind?.RemoveAllMiracles()
 						C.grant_miracles(target, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)
-		if("DEATH")
-			to_chat(target, span_warning("Images of Her Work most grandoise flood your mind yet... you choose to reject them. Only final death awaits now, you foolish thing."))
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-			target.emote("Agony")
-			loc.visible_message(span_cult("[target] is violently thrashing on top of the rune, writhing, as they dare to defy ZIZO."))
+	if(prompt == "DEATH")
+		to_chat(target, span_warning("Images of Her Work most grandoise flood your mind yet... you choose to reject them. Only final death awaits now, you foolish thing."))
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.emote("Agony")
+		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy ZIZO."))
 
 
 
@@ -644,27 +650,32 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_COMMIE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITH GREED IN THEIR HEART ALREADY PRESENT!!"))
 		return
-	var/yesorno = list("DEAL", "NO DEAL")
-	var/dialoguechoice = input(target, "GOOD DEAL!", src) as null|anything in yesorno
-	switch(dialoguechoice) // fuuck
-		if("DEAL")
-			target.Stun(60)
-			target.Knockdown(60)
-			target.emote("Laugh")
-			playsound(loc, 'sound/misc/smelter_fin.ogg', 50)
-			loc.visible_message(span_cult("[target]'s eyes gleam and shine with a glimmer of a thousand gems and jewels, as they give in to their lust for wealth."))
-			spawn(20)
-				playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
-				var/previous_level = target.devotion.level
-				target.set_patron(new /datum/patron/inhumen/matthios)
-				target.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE) //fuck do they gotta get? a better grip
-				target.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-				target.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
-				target.change_stat("perception", 1)
-				target.change_stat("endurance", 1)
-				spawn(40)
-					to_chat(target, span_cult("More to the maw, for [target] shall feed their own greed along with us!"))
-					playsound(loc, 'sound/items/matidol2.ogg', 50)
+	//var/yesorno = list("DEAL", "NO DEAL")
+	//var/dialoguechoice = input(target, "GOOD DEAL!", src) as null|anything in yesorno
+	var/prompt = alert(target, "GOOD DEAL?",, "GOOD DEAL!", "NO DEAL!")
+	//switch(dialoguechoice) // fuuck
+	if(prompt == "GOOD DEAL!")
+		target.Stun(60)
+		target.Knockdown(60)
+		target.emote("Laugh")
+		playsound(loc, 'sound/misc/smelter_fin.ogg', 50)
+		loc.visible_message(span_cult("[target]'s eyes gleam and shine with a glimmer of a thousand gems and jewels, as they give in to their lust for wealth."))
+		spawn(20)
+			playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
+			target.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE) //fuck do they gotta get? a better grip
+			target.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+			target.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
+			target.change_stat("perception", 1)
+			target.change_stat("endurance", 1)
+			spawn(40)
+				to_chat(target, span_cult("More to the maw, for [target] shall feed their own greed along with us!"))
+				playsound(loc, 'sound/items/matidol2.ogg', 50)
+				if(target.devotion == null) // why can't it just go 'huh null? yeah ok dont care let's continue' why do i have to write this
+					target.set_patron(new /datum/patron/inhumen/matthios)
+					return
+				else
+					var/previous_level = target.devotion.level // IF NULL JUST MOVE ON WHAT'S YOUR PROBLEM HOLY FUCKING SHIT!!!
+					target.set_patron(new /datum/patron/inhumen/matthios) //now you might ask why we get previous_level variable before switching le patron. reason is when swapping patrons it completely fucks up devotion data for people
 					var/datum/devotion/C = new /datum/devotion(target, target.patron)
 					if(previous_level == 4)
 						target.mind?.RemoveAllMiracles()
@@ -678,14 +689,14 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					if(previous_level == 1)
 						target.mind?.RemoveAllMiracles()
 						C.grant_miracles(target, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)
-		if("NO DEAL")
-			to_chat(target, span_warning("All that does glimmer could be yours... if only you would submit to your own greedy nature. Only final death awaits now, you, fellow most austere."))
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-			target.emote("Agony")
-			target.apply_damage(100, BURN, HEAD)
-			loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy MATTHIOS."))
+	if(prompt == "NO DEAL!")
+		to_chat(target, span_warning("All that does glimmer could be yours... if only you would submit to your own greedy nature. Only final death awaits now, you, fellow most austere."))
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.emote("Agony")
+		target.apply_damage(100, BURN, HEAD)
+		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy MATTHIOS."))
 
 
 
@@ -742,7 +753,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 				if(do_after(user, 50))
 					user.say("A GORGEOUS BUFFET AWAITS US!!")
 					if(do_after(user, 50))
-						user.say("COME, JOIN US IN THE SLAUGHTER MOST NOBLE, THE SLAUGHTER OF THE WEAK!!")
+						user.say("LET US CULL AND HUNT, CULL AND HUNT, TOGETHER!!")
 						if(do_after(user, 50))
 							//icon_state = "graggar_active" when we have one
 							graggarconversion(target)
@@ -806,26 +817,35 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_HORDE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITH SLAUGHTER IN THEIR HEART!!"))
 		return
-	var/yesorno = list("KILL KILL KILL!!!", "I DEFY YOU!")
-	var/dialoguechoice = input(target, "CALL TO CULLING", src) as null|anything in yesorno
-	switch(dialoguechoice) // fuuck
-		if("KILL KILL KILL!!!")
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-			target.emote("Warcry")
-			loc.visible_message(span_cult("[target]'s images of slaughter most sublime fill their mind, as they embrace their violent nature, casting away shackles of honour and empathy.")) // i cant
-			spawn(20)
-				playsound(target, 'sound/misc/heroin_rush.ogg', 100)
-				playsound(target, 'sound/health/fastbeat.ogg', 100)
-				var/previous_level = target.devotion.level
-				target.set_patron(new /datum/patron/inhumen/graggar)
-				target.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-				target.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-				target.change_stat("strength", 1) // do you even lift
-				spawn(40)
-					to_chat(target, span_cult("Break them."))
-					target.say("SLAUGHTER!!") // many enemies bring much honour
+	//var/yesorno = list("KILL KILL KILL!!!", "I DEFY YOU!")
+	//var/dialoguechoice = input(target, "CALL TO CULLING", src) as null|anything in yesorno
+	var/prompt = alert(target, "CULL AND HUNT!",, "KILL KILL KILL!!", "I DEFY YOU!!")
+	//switch(dialoguechoice) // fuuck
+	if(prompt == "KILL KILL KILL!!")
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.emote("Warcry")
+		loc.visible_message(span_cult("[target]'s mind if flooded with images of slaughter most sublime, as they embrace their violent nature, casting away shackles of honour and empathy.")) // i cant
+		spawn(20)
+			playsound(target, 'sound/misc/heroin_rush.ogg', 100)
+			playsound(target, 'sound/health/fastbeat.ogg', 100)
+			//if(previous_level == null)
+				//var/nada = previous_level
+				//return success
+				//var/no_level = 0
+			target.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			target.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+			target.change_stat("strength", 1) // do you even lift
+			spawn(40)
+				to_chat(target, span_cult("Break them."))
+				target.say("SLAUGHTER!!") // many enemies bring much honour
+				if(target.devotion == null) // why can't it just go 'huh null? yeah ok dont care let's continue' why do i have to write this
+					target.set_patron(new /datum/patron/inhumen/graggar)
+					return
+				else
+					var/previous_level = target.devotion.level // IF NULL JUST MOVE ON WHAT'S YOUR PROBLEM HOLY FUCKING SHIT!!!
+					target.set_patron(new /datum/patron/inhumen/graggar) //now you might ask why we get previous_level variable before switching le patron. reason is when swapping patrons it completely fucks up devotion data for people
 					var/datum/devotion/C = new /datum/devotion(target, target.patron)
 					if(previous_level == 4)
 						target.mind?.RemoveAllMiracles()
@@ -839,15 +859,15 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					if(previous_level == 1)
 						target.mind?.RemoveAllMiracles()
 						C.grant_miracles(target, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)
-		if("I DEFY YOU!")
-			to_chat(target, span_warning("AAAAAAAAAAAAAAAAHHHH!!"))
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-			target.emote("Agony")
-			target.say("DIE, WRETCHES!!") // many enemies bring much honour
-			target.apply_damage(100, BRUTE, HEAD)
-			loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy GRAGGAR."))
+	if(prompt == "I DEFY YOU!!")
+		to_chat(target, span_warning("AAAAAAAAAAAAAAAAHHHH!!"))
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.emote("Agony")
+		target.say("DIE, WRETCHES!!") // many enemies bring much honour
+		target.apply_damage(100, BRUTE, HEAD)
+		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy GRAGGAR."))
 
 
 
@@ -855,7 +875,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 /obj/structure/ritualcircle/baotha
 	name = "Rune of Desire"
 	desc = "A Holy Rune of BAOTHA"
-	icon_state = "eora_chalky"
+	icon_state = "eora_chalky" // hello mister placeholder
 	var/baotharites = list("Conversion")
 
 /obj/structure/ritualcircle/baotha/attack_hand(mob/living/user)
@@ -886,10 +906,10 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					if(do_after(user, 50))
 						user.say("#The world's momentary pleasures have left us wanting...") // can someone else write this instead of me
 						if(do_after(user, 50))
-							icon_state = "eora_active"
+							icon_state = "eora_active" // hello mister placeholder
 							baothaconversion(target) // removed CD bc it's gonna be coal to sit there and wait for it to go off rite cooldown, this one is purely social in its nature
 							spawn(120)
-								icon_state = "eora_chalky"
+								icon_state = "eora_chalky" // hello mister placeholder
 
 /obj/structure/ritualcircle/baotha/proc/baothaconversion(src)
 	var/onrune = view(0, loc)
@@ -905,27 +925,32 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_DEPRAVED))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE ALREADY DEPRAVED ENOUGH!!"))
 		return
-	var/yesorno = list("LEASH", "LASH")
-	var/dialoguechoice = input(target, "LEASH OR LASH", src) as null|anything in yesorno
-	switch(dialoguechoice) // fuuck
-		if("LEASH")
-			to_chat(target, span_warning("Images of Her Work most grandoise flood your mind, as the heretical knowledge is seared right into your very body and soul."))
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("PLEASURE FOR PLEASURE'S SAKE!"))
-			target.sexcon.set_arousal(300) 
-			loc.visible_message(span_cult("Blank.")) // warhammer 3 slaaneshi daemonette quotes
-			spawn(20)
-				playsound(target, 'sound/health/fastbeat.ogg', 60)
-				playsound(loc, 'sound/ambience/creepywind.ogg', 80)
-				var/previous_level = target.devotion.level
-				target.set_patron(new /datum/patron/inhumen/baotha)
-				target.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-				target.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
-				target.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE) // haha get it?
-				target.change_stat("speed", 1)
-				spawn(40)
-					to_chat(target, span_purple("Backshots, divine.")) // help
+	//var/yesorno = list("LEASH", "LASH")
+	//var/dialoguechoice = input(target, "LEASH OR LASH", src) as null|anything in yesorno
+	//switch(dialoguechoice) // fuuck
+	var/prompt = alert(target, "LEASH OF SUBMISSION OR LASH OF DEFIANCE?",, "LEASH", "LASH")
+	if(prompt == "LEASH")
+		to_chat(target, span_warning("Hedonistic visions of excess and indulgence echo in your brain, as a drug-addled haze settles over your mind. Your body yearns for more.")) // helloooOOOOOOOO
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("PLEASURE FOR PLEASURE'S SAKE!"))
+		target.sexcon.set_arousal(300) 
+		loc.visible_message(span_cult("[target] writhes and moans as sensations of pleasure and pain surge through their body...")) // warhammer 3 slaaneshi daemonette quotes
+		spawn(20)
+			playsound(target, 'sound/health/fastbeat.ogg', 60)
+			playsound(loc, 'sound/ambience/creepywind.ogg', 80)
+			target.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+			target.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+			target.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE) // haha get it?
+			target.change_stat("speed", 1)
+			spawn(40)
+				to_chat(target, span_purple("Enjoy yourself, for what is lyfe without pleasure, ha?")) // help
+				if(target.devotion == null)
+					target.set_patron(new /datum/patron/inhumen/baotha)
+					return
+				else
+					var/previous_level = target.devotion.level //now you might ask why we get previous_level variable before switching le patron. reason is when swapping patrons it completely fucks up devotion data for people
+					target.set_patron(new /datum/patron/inhumen/baotha)
 					var/datum/devotion/C = new /datum/devotion(target, target.patron)
 					if(previous_level == 4)
 						target.mind?.RemoveAllMiracles()
@@ -939,11 +964,11 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					if(previous_level == 1)
 						target.mind?.RemoveAllMiracles()
 						C.grant_miracles(target, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)	
-		if("LASH")
-			to_chat(target, span_warning("Images of Her Work most grandoise flood your mind yet... you choose to reject them. Only final death awaits now, you foolish thing.")) // gotta change it too
-			target.Stun(60)
-			target.Knockdown(60)
-			to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
-			target.emote("Agony")
-			target.apply_damage(100, BRUTE, HEAD)
-			loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy Baotha."))
+	if(prompt == "LASH")
+		to_chat(target, span_warning("All too asutere, aloof and prudish, aren't you? Bah, I shall not waste any more of my time on you.")) // gotta change it too
+		target.Stun(60)
+		target.Knockdown(60)
+		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.emote("Agony")
+		target.apply_damage(100, BRUTE, HEAD)
+		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy Baotha."))
