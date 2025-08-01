@@ -547,6 +547,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		target.Stun(60)
 		target.Knockdown(60)
 		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
+		target.apply_damage(100, BURN, BODY_ZONE_HEAD)
 		target.emote("Agony")
 		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy ZIZO."))
 
@@ -695,7 +696,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		target.Knockdown(60)
 		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
 		target.emote("Agony")
-		target.apply_damage(100, BURN, HEAD)
+		target.apply_damage(100, BURN, BODY_ZONE_HEAD)
 		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy MATTHIOS."))
 
 
@@ -866,7 +867,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
 		target.emote("Agony")
 		target.say("DIE, WRETCHES!!") // many enemies bring much honour
-		target.apply_damage(100, BRUTE, HEAD)
+		target.apply_damage(100, BURN, BODY_ZONE_HEAD)
 		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy GRAGGAR."))
 
 
@@ -970,5 +971,5 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		target.Knockdown(60)
 		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
 		target.emote("Agony")
-		target.apply_damage(100, BRUTE, HEAD)
+		target.apply_damage(100, BURN, HEAD)
 		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy Baotha."))
