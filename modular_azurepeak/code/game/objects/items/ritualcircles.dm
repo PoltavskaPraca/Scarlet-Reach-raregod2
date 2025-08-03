@@ -499,6 +499,10 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_CABAL))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE ALREADY OF THE CABAL"))
 		return
+	if(target.already_converted_once)
+		loc.visible_message(span_cult("BLOODY NIMROD!!"))
+		target.apply_damage(150, BRUTE, BODY_ZONE_HEAD)
+		return 
 	//var/yesorno = list("SUBMISSION", "DEATH")
 	//var/dialoguechoice = input(target, "SUBMISSION OR DEATH", src) as null|anything in yesorno
 	var/prompt = alert(target, "SUBMISSION OR DEATH",, "SUBMISSION", "DEATH")
@@ -522,9 +526,10 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 			target.change_stat("perception", 1)
 			spawn(40)
 				playsound(loc, 'sound/misc/boatleave.ogg', 100)
-				to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will will fight in the name of Progress."))
+				to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will fight in the name of Progress."))
 				if(target.devotion == null) // why can't it just go 'huh null? yeah ok dont care let's continue' why do i have to write this
 					target.set_patron(new /datum/patron/inhumen/zizo)
+					target.already_converted_once = TRUE
 					return
 				else
 					var/previous_level = target.devotion.level // IF NULL JUST MOVE ON WHAT'S YOUR PROBLEM HOLY FUCKING SHIT!!!
@@ -542,6 +547,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					if(previous_level == 1)
 						target.mind?.RemoveAllMiracles()
 						C.grant_miracles(target, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)
+					target.already_converted_once = TRUE 
 	if(prompt == "DEATH")
 		to_chat(target, span_warning("Images of Her Work most grandoise flood your mind yet... you choose to reject them. Only final death awaits now, you foolish thing."))
 		target.Stun(60)
@@ -651,6 +657,10 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_COMMIE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITH GREED IN THEIR HEART ALREADY PRESENT!!"))
 		return
+	if(target.already_converted_once)
+		loc.visible_message(span_cult("BLOODY NIMROD!!"))
+		target.apply_damage(150, BRUTE, BODY_ZONE_HEAD)
+		return 
 	//var/yesorno = list("DEAL", "NO DEAL")
 	//var/dialoguechoice = input(target, "GOOD DEAL!", src) as null|anything in yesorno
 	var/prompt = alert(target, "GOOD DEAL?",, "GOOD DEAL!", "NO DEAL!")
@@ -818,6 +828,10 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_HORDE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITH SLAUGHTER IN THEIR HEART!!"))
 		return
+	if(target.already_converted_once)
+		loc.visible_message(span_cult("BLOODY NIMROD!!"))
+		target.apply_damage(150, BRUTE, BODY_ZONE_HEAD)
+		return 
 	//var/yesorno = list("KILL KILL KILL!!!", "I DEFY YOU!")
 	//var/dialoguechoice = input(target, "CALL TO CULLING", src) as null|anything in yesorno
 	var/prompt = alert(target, "CULL AND HUNT!",, "KILL KILL KILL!!", "I DEFY YOU!!")
@@ -926,6 +940,10 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	if(HAS_TRAIT(target, TRAIT_DEPRAVED))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE ALREADY DEPRAVED ENOUGH!!"))
 		return
+	if(target.already_converted_once)
+		loc.visible_message(span_cult("BLOODY NIMROD!!"))
+		target.apply_damage(150, BRUTE, BODY_ZONE_HEAD)
+		return 
 	//var/yesorno = list("LEASH", "LASH")
 	//var/dialoguechoice = input(target, "LEASH OR LASH", src) as null|anything in yesorno
 	//switch(dialoguechoice) // fuuck
@@ -971,5 +989,5 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		target.Knockdown(60)
 		to_chat(target, span_userdanger("UNIMAGINABLE PAIN!"))
 		target.emote("Agony")
-		target.apply_damage(100, BURN, HEAD)
+		target.apply_damage(100, BURN, BODY_ZONE_HEAD)
 		loc.visible_message(span_cult("[target] is violently thrashing atop the rune, writhing, as they dare to defy Baotha."))
