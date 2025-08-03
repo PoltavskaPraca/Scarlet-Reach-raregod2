@@ -522,8 +522,6 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 			target.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 			target.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 			target.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-			target.change_stat("intelligence", 1)
-			target.change_stat("perception", 1)
 			spawn(40)
 				playsound(loc, 'sound/misc/boatleave.ogg', 100)
 				to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will fight in the name of Progress."))
@@ -676,8 +674,6 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 			target.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE) //fuck do they gotta get? a better grip
 			target.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 			target.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
-			target.change_stat("perception", 1)
-			target.change_stat("endurance", 1)
 			spawn(40)
 				to_chat(target, span_cult("More to the maw, for [target] shall feed their own greed along with us!"))
 				playsound(loc, 'sound/items/matidol2.ogg', 50)
@@ -851,7 +847,6 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 				//var/no_level = 0
 			target.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			target.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-			target.change_stat("strength", 1) // do you even lift
 			spawn(40)
 				to_chat(target, span_cult("Break them."))
 				target.say("SLAUGHTER!!") // many enemies bring much honour
@@ -961,7 +956,6 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 			target.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 			target.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
 			target.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE) // haha get it?
-			target.change_stat("speed", 1)
 			spawn(40)
 				to_chat(target, span_purple("Enjoy yourself, for what is lyfe without pleasure, ha?")) // help
 				if(target.devotion == null)
