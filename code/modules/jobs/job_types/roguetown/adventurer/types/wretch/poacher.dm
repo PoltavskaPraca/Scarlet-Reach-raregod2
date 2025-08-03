@@ -35,7 +35,6 @@
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
-	//H.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE) // absolutely useless at such a low level, it's insane. Besides that, he lives in a forest and... steals people's shit sneaky-like?
 	H.adjust_skillrank(/datum/skill/craft/traps, 4, TRUE)
 	//these people live in the forest so let's give them some peasant skills
 	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
