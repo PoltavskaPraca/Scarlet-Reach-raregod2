@@ -215,7 +215,7 @@
 	name = "cold dress"
 	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
-	desc = "A thick, padded, and comfortable dress popular amongst nobility during winter. This one, however, has far less padding while still remaining just as warm."
+	desc = "A thick and comfortable dress popular amongst nobility during winter."
 	body_parts_covered = COVERAGE_FULL
 	icon_state = "winterdress"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
