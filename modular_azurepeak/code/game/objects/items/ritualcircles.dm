@@ -424,13 +424,19 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 							spawn(120)
 								icon_state = "zizo_chalky"
 		if("Conversion")
-			var/onrune = view(1, loc)
-			var/list/folksonrune = list()
-			for(var/mob/living/carbon/human/persononrune in onrune)
-				if(!HAS_TRAIT(persononrune, TRAIT_CABAL))
-					folksonrune += persononrune
-			var/target = input(user, "Choose a host") as null|anything in folksonrune
-			if(!target)
+			if(!Adjacent(user))
+				to_chat(user, "You must stand close to the rune to receive Zizo's blessing.")
+				return
+			var/list/valids_on_rune = list()
+			for(var/mob/living/carbon/human/peep in range(0, loc))
+				if(HAS_TRAIT(peep, TRAIT_CABAL))
+					continue
+				valids_on_rune += peep
+			if(!valids_on_rune.len)
+				to_chat(user, "No valid targets on the rune!")
+				return
+			var/mob/living/carbon/human/target = input(user, "Choose a host") as null|anything in valids_on_rune
+			if(!target || QDELETED(target) || target.loc != loc)
 				return
 			if(do_after(user, 50))
 				user.say("ZIZO! ZIZO! DAME OF PROGRESS!!")
@@ -485,12 +491,12 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	backr = /obj/item/rogueweapon/sword/long/zizo
 	neck = /obj/item/clothing/neck/roguetown/bevor
 
-/obj/structure/ritualcircle/zizo/proc/zizoconversion(src)
+/obj/structure/ritualcircle/zizo/proc/zizoconversion(mob/living/carbon/human/target)
 	var/onrune = view(0, loc)
 	var/list/possible_targets = list()
 	for(var/mob/living/carbon/human/persononrune in onrune)
 		possible_targets += persononrune
-	var/mob/living/carbon/human/target
+	//var/mob/living/carbon/human/target
 	if(possible_targets.len)
 		target = pick(possible_targets)
 	else
@@ -598,13 +604,19 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 							spawn(120)
 								icon_state = "matthios_chalky"
 		if("Conversion")
-			var/onrune = view(1, loc)
-			var/list/folksonrune = list()
-			for(var/mob/living/carbon/human/persononrune in onrune)
-				if(!HAS_TRAIT(persononrune, TRAIT_COMMIE))
-					folksonrune += persononrune
-			var/target = input(user, "Choose a host") as null|anything in folksonrune
-			if(!target)
+			if(!Adjacent(user))
+				to_chat(user, "You must stand close to the rune to receive Matthios' blessing.")
+				return
+			var/list/valids_on_rune = list()
+			for(var/mob/living/carbon/human/peep in range(0, loc))
+				if(HAS_TRAIT(peep, TRAIT_COMMIE))
+					continue
+				valids_on_rune += peep
+			if(!valids_on_rune.len)
+				to_chat(user, "No valid targets on the rune!")
+				return
+			var/mob/living/carbon/human/target = input(user, "Choose a host") as null|anything in valids_on_rune
+			if(!target || QDELETED(target) || target.loc != loc)
 				return
 			if(do_after(user, 50))
 				user.say("Gold and Silver, he feeds!!")
@@ -747,13 +759,19 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 							//spawn(120)
 								//icon_state = "graggar_chalky" 
 		if("Conversion")
-			var/onrune = view(1, loc)
-			var/list/folksonrune = list()
-			for(var/mob/living/carbon/human/persononrune in onrune)
-				if(!HAS_TRAIT(persononrune, TRAIT_HORDE))
-					folksonrune += persononrune
-			var/target = input(user, "Choose a host") as null|anything in folksonrune
-			if(!target)
+			if(!Adjacent(user))
+				to_chat(user, "You must stand close to the rune to receive Graggar's blessing.")
+				return
+			var/list/valids_on_rune = list()
+			for(var/mob/living/carbon/human/peep in range(0, loc))
+				if(HAS_TRAIT(peep, TRAIT_HORDE))
+					continue
+				valids_on_rune += peep
+			if(!valids_on_rune.len)
+				to_chat(user, "No valid targets on the rune!")
+				return
+			var/mob/living/carbon/human/target = input(user, "Choose a host") as null|anything in valids_on_rune
+			if(!target || QDELETED(target) || target.loc != loc)
 				return
 			if(do_after(user, 50))
 				user.say("MOTIVE FORCE, OH, VIOLENCE!!")
@@ -810,12 +828,12 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	cloak = /obj/item/clothing/cloak/graggar
 	r_hand = /obj/item/rogueweapon/greataxe/steel/doublehead/graggar
 
-/obj/structure/ritualcircle/graggar/proc/graggarconversion(src)
+/obj/structure/ritualcircle/graggar/proc/graggarconversion(mob/living/carbon/human/target)
 	var/onrune = view(0, loc)
 	var/list/possible_targets = list()
 	for(var/mob/living/carbon/human/persononrune in onrune)
 		possible_targets += persononrune
-	var/mob/living/carbon/human/target
+	//var/mob/living/carbon/human/target
 	if(possible_targets.len)
 		target = pick(possible_targets)
 	else
@@ -901,13 +919,19 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	var/riteselection = input(user, "Rituals of Desire", src) as null|anything in baotharites
 	switch(riteselection) // put ur rite selection here
 		if("Conversion")
-			var/onrune = view(1, loc)
-			var/list/folksonrune = list()
-			for(var/mob/living/carbon/human/persononrune in onrune)
-				if(!HAS_TRAIT(persononrune, TRAIT_DEPRAVED))
-					folksonrune += persononrune
-			var/target = input(user, "Choose a host") as null|anything in folksonrune
-			if(!target)
+			if(!Adjacent(user))
+				to_chat(user, "You must stand close to the rune to receive Baotha's blessing.")
+				return
+			var/list/valids_on_rune = list()
+			for(var/mob/living/carbon/human/peep in range(0, loc))
+				if(HAS_TRAIT(peep, TRAIT_DEPRAVED))
+					continue
+				valids_on_rune += peep
+			if(!valids_on_rune.len)
+				to_chat(user, "No valid targets on the rune!")
+				return
+			var/mob/living/carbon/human/target = input(user, "Choose a host") as null|anything in valids_on_rune
+			if(!target || QDELETED(target) || target.loc != loc)
 				return
 			if(do_after(user, 50))
 				user.say("#Lady pleasure, comfort and please us...")
@@ -921,12 +945,12 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 							spawn(120)
 								icon_state = "eora_chalky" // hello mister placeholder
 
-/obj/structure/ritualcircle/baotha/proc/baothaconversion(src)
+/obj/structure/ritualcircle/baotha/proc/baothaconversion(mob/living/carbon/human/target)
 	var/onrune = view(0, loc)
 	var/list/possible_targets = list()
 	for(var/mob/living/carbon/human/persononrune in onrune)
 		possible_targets += persononrune
-	var/mob/living/carbon/human/target
+	//var/mob/living/carbon/human/target
 	if(possible_targets.len)
 		target = pick(possible_targets)
 	else

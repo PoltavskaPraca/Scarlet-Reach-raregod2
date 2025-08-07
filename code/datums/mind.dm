@@ -739,16 +739,15 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 //removes spells that have miracle = true on them
 /datum/mind/proc/RemoveMiracle(obj/effect/proc_holder/spell/miracle)
-	var/success = FALSE
-	if(!miracle)
-		return FALSE
-	for(var/X in spell_list)
-		var/obj/effect/proc_holder/spell/S = X
-		if(miracle.miracle)
-			spell_list -= S
-			qdel(S)
-			success = TRUE // won't return here because of possibility of duplicate spells in spell_list
-	return success
+	for(var/M in spell_list)
+		var/obj/effect/proc_holder/spell/S = M
+		if(istype(S, miracle) && S.miracle)
+			var/bruh = S
+			spell_list -= bruh
+			qdel(bruh)
+			return
+		else
+			return
 
 /datum/mind/proc/RemoveAllMiracles()
 	for(var/obj/effect/proc_holder/Miracles in spell_list)
