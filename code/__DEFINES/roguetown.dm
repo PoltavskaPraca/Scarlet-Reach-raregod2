@@ -122,6 +122,7 @@
 	/datum/species/halforc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
+	/datum/species/lamia, \
 )
 
 #define RACES_NOBILITY_ELIGIBLE \
@@ -150,6 +151,7 @@
     /datum/species/lizardfolk,\
     /datum/species/dracon,\
     /datum/species/akula,\
+	/datum/species/lamia, \
 
 #define RACES_FEARED \
 	/datum/species/halforc,\
