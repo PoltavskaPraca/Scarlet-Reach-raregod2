@@ -492,15 +492,8 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	neck = /obj/item/clothing/neck/roguetown/bevor
 
 /obj/structure/ritualcircle/zizo/proc/zizoconversion(mob/living/carbon/human/target)
-	var/onrune = view(0, loc)
-	var/list/possible_targets = list()
-	for(var/mob/living/carbon/human/persononrune in onrune)
-		possible_targets += persononrune
-	//var/mob/living/carbon/human/target
-	if(possible_targets.len)
-		target = pick(possible_targets)
-	else
-		to_chat(usr, "No valid targets are standing on the rune! You must stand directly on the rune to receive Zizo's blessing.")
+	if(!target || QDELETED(target) || target.loc != loc)
+		to_chat(usr, "Selected target is not on the rune! [target.p_they(TRUE)] must be directly on top of the rune to receive Zizo's blessing.")
 		return
 	if(HAS_TRAIT(target, TRAIT_CABAL))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE ALREADY OF THE CABAL"))
@@ -664,6 +657,9 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	backr = /obj/item/rogueweapon/flail/peasantwarflail/matthios
 
 /obj/structure/ritualcircle/matthios/proc/matthiosconversion(mob/living/carbon/human/target)
+	if(!target || QDELETED(target) || target.loc != loc)
+		to_chat(usr, "Selected target is not on the rune! [target.p_they(TRUE)] must be directly on top of the rune to receive Matthios' blessing.")
+		return
 	if(HAS_TRAIT(target, TRAIT_COMMIE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITH GREED IN THEIR HEART ALREADY PRESENT!!"))
 		return
@@ -829,15 +825,8 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 	r_hand = /obj/item/rogueweapon/greataxe/steel/doublehead/graggar
 
 /obj/structure/ritualcircle/graggar/proc/graggarconversion(mob/living/carbon/human/target)
-	var/onrune = view(0, loc)
-	var/list/possible_targets = list()
-	for(var/mob/living/carbon/human/persononrune in onrune)
-		possible_targets += persononrune
-	//var/mob/living/carbon/human/target
-	if(possible_targets.len)
-		target = pick(possible_targets)
-	else
-		to_chat(usr, "No valid targets are standing on the rune! You must stand directly on the rune to receive Graggar's blessing.")
+	if(!target || QDELETED(target) || target.loc != loc)
+		to_chat(usr, "Selected target is not on the rune! [target.p_they(TRUE)] must be directly on top of the rune to receive Graggar's blessing.")
 		return
 	if(HAS_TRAIT(target, TRAIT_HORDE))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITH SLAUGHTER IN THEIR HEART!!"))
@@ -946,15 +935,8 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 								icon_state = "eora_chalky" // hello mister placeholder
 
 /obj/structure/ritualcircle/baotha/proc/baothaconversion(mob/living/carbon/human/target)
-	var/onrune = view(0, loc)
-	var/list/possible_targets = list()
-	for(var/mob/living/carbon/human/persononrune in onrune)
-		possible_targets += persononrune
-	//var/mob/living/carbon/human/target
-	if(possible_targets.len)
-		target = pick(possible_targets)
-	else
-		to_chat(usr, "No valid targets are standing on the rune! You must stand directly on the rune to receive Baotha's blessing.")
+	if(!target || QDELETED(target) || target.loc != loc)
+		to_chat(usr, "Selected target is not on the rune! [target.p_they(TRUE)] must be directly on top of the rune to receive Baotha's blessing.")
 		return
 	if(HAS_TRAIT(target, TRAIT_DEPRAVED))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE ALREADY DEPRAVED ENOUGH!!"))
