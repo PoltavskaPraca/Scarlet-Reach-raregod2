@@ -151,7 +151,6 @@
     /datum/species/lizardfolk,\
     /datum/species/dracon,\
     /datum/species/akula,\
-	/datum/species/lamia, \
 
 #define RACES_FEARED \
 	/datum/species/halforc,\
@@ -160,6 +159,7 @@
     /datum/species/anthromorphsmall,\
     /datum/species/kobold,\
     /datum/species/goblinp,\
+	/datum/species/lamia, \
 
 #define RACES_NOBILITY_ELIGIBLE_UP list(RACES_NOBILITY_ELIGIBLE)
 
@@ -200,7 +200,6 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/golem/metal,\
-	/datum/species/lamia, \
 )
 
 #define CLOTHED_RACES_TYPES list(\

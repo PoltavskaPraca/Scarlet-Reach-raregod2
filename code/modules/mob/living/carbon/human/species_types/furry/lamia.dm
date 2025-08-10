@@ -4,13 +4,12 @@
 /datum/species/lamia
 	name = "Lamia"
 	id = "lamia"
-	desc = "A product of Dendor's enigmatic meddling in mortals races. The average wild-kin suffers from animalistic urges that vary in severity, \
-	from simply avoiding certain foods to smoldering desires to howl at the moon or chase prey. Usually these urges are tied to the animal that the wild-kin is melded with, \
-	making them rather predictable. Despite this, the way each wild-kin approaches their bizarre physiology and psychology varies, \
-	creating a diverse race of people who may not even empathise with one another. And whilst Dendor is considered the main culprit for Wild-kin, there are those created through other means, \
-	akin to Noc's stolen knowledge that created lupians and other abstract experimentation or circumstance. \
-	(Wild-kin are not a template race to play your own custom race. If you play a wild-kin, you are expected to roleplay to the setting and the race's lore.)<br>\
-	(+1 Constitution, +1 Perception)"
+	desc = "The monstrous spawn of Abyssor, snake and humen conjoined together. While one could consider them to be of Dendor's, he had no hand in their creation. \
+	Lamia are widespread in the southern coastal regions, where their tribes have settled in aeons ago, much of their written and oral history is filled with accounts \
+	of grand raids on coastal regions, for they have been terrorizing any race that has dared to settle near their waters. For this, they are widely shunned by the other races, \
+	with the exception of Axians with whom they share their natural heartlands. \
+	Many a sailor has met their end at the claws of Lamias.<br>\
+	(+1 Strength, SPD cap, Longstrider)" // SMOKINGRAWOCB
 	default_color = "444"
 	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAIR, LAMIAN_TAIL)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
@@ -33,7 +32,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	race_bonus = list(STAT_SPEED = -1, STAT_STRENGTH = 10)
+	inherent_traits = list(TRAIT_LONGSTRIDER, TRAIT_WILD_EATER, TRAIT_LAMIAN_TAIL)
+	//race_bonus = list(STAT_STRENGTH = 1) // SMOKINGRAWOCB
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
