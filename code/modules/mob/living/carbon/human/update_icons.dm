@@ -605,9 +605,9 @@ There are several things that need to be remembered:
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_SHOES]
 		inv.update_icon()
 
-//	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
-//	if(lamian_tail)
-//		return // taurs don't render shoes if they manage to even equip them
+	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
+	if(lamian_tail)
+		return // taurs don't render shoes if they manage to even equip them
 
 	if(shoes)
 		shoes.screen_loc = rogueui_shoes					//move the item to the appropriate screen loc

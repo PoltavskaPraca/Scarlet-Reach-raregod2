@@ -409,7 +409,7 @@
 			. += "[m3] [beltl.get_examine_string(user)] on [m2] belt."
 
 	//shoes
-	if(shoes && !(SLOT_SHOES in obscured))
+	if(shoes && !(SLOT_SHOES in obscured) && !TRAIT_LAMIAN_TAIL)
 		var/str = "[m3] [shoes.get_examine_string(user)] on [m2] feet. "
 		if(is_smart)
 			str += shoes.integrity_check()
@@ -417,6 +417,15 @@
 			str += "[shoes.integrity_check()]"
 		else
 			str = "[m3] some shoes on [m2] feet!"
+		. += str
+	if(shoes && !(SLOT_SHOES in obscured) && TRAIT_LAMIAN_TAIL)
+		var/str = "[m3] [shoes.get_examine_string(user)] on [m2] tip of the tail. "
+		if(is_smart)
+			str += shoes.integrity_check()
+		else if(!is_stupid)
+			str += "[shoes.integrity_check()]"
+		else
+			str = "[m3] some shoes on [m2] tip of the tail!"
 		. += str
 
 	//mask
@@ -547,14 +556,24 @@
 				if(10 to INFINITY)
 					bleed_wording = "bleeding profusely"
 			var/list/bleeding_limbs = list()
-			var/static/list/bleed_zones = list(
-				BODY_ZONE_HEAD,
-				BODY_ZONE_CHEST,
-				BODY_ZONE_R_ARM,
-				BODY_ZONE_L_ARM,
-				BODY_ZONE_R_LEG,
-				BODY_ZONE_L_LEG,
-			)
+			var/static/list/bleed_zones
+			if(HAS_TRAIT(src, TRAIT_LAMIAN_TAIL))
+				bleed_zones = list(
+					BODY_ZONE_HEAD,
+					BODY_ZONE_CHEST,
+					BODY_ZONE_R_ARM,
+					BODY_ZONE_L_ARM,
+					BODY_ZONE_LAMIAN_TAIL
+				)
+			else
+				bleed_zones = list(
+					BODY_ZONE_HEAD,
+					BODY_ZONE_CHEST,
+					BODY_ZONE_R_ARM,
+					BODY_ZONE_L_ARM,
+					BODY_ZONE_R_LEG,
+					BODY_ZONE_L_LEG,
+				)
 			for(var/bleed_zone in bleed_zones)
 				var/obj/item/bodypart/bleeder = get_bodypart(bleed_zone)
 				if(!bleeder?.get_bleed_rate() || (!observer_privilege && !get_location_accessible(src, bleeder.body_zone)))
