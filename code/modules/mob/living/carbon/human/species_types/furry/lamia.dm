@@ -7,8 +7,7 @@
 	desc = "The monstrous spawn of Abyssor, snake and humen conjoined together. While one could consider them to be of Dendor's, he had no hand in their creation. \
 	Lamia are widespread in the southern coastal regions, where their tribes have settled in aeons ago, much of their written and oral history is filled with accounts \
 	of grand raids on coastal regions, for they have been terrorizing any race that has dared to settle near their waters. For this, they are widely shunned by the other races, \
-	with the exception of Axians with whom they share their natural heartlands. \
-	Many a sailor has met their end at the claws of Lamias.<br>\
+	with the exception of Axians with whom they share their natural heartlands. Many a sailor has met their end at the claws of Lamias.<br>\
 	(+1 Strength, SPD cap, Longstrider)" // SMOKINGRAWOCB
 	default_color = "444"
 	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAIR, LAMIAN_TAIL)

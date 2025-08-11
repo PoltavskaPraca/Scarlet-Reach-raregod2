@@ -5,7 +5,7 @@
 	icon = 'icons/mob/taurs.dmi'
 	icon_state = ""
 	attack_verb = list("hit")
-	max_damage = 200
+	max_damage = 300
 	body_zone = BODY_ZONE_LAMIAN_TAIL
 	body_part = LEGS
 	body_damage_coeff = 1
