@@ -35,7 +35,7 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
 	inherent_traits = list(TRAIT_LONGSTRIDER, TRAIT_WILD_EATER, TRAIT_LAMIAN_TAIL)
-	//race_bonus = list(STAT_STRENGTH = 1) // SMOKINGRAWOCB
+	race_bonus = list(STAT_STRENGTH = 1) // SMOKINGRAWOCB
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -69,7 +69,7 @@
 		/datum/customizer/organ/frills/anthro, //add elf ears
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/lamia, // only tapered or hemi tapered or tentacle
-		/datum/customizer/organ/breasts/animal,
+		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/anthro,
 		)
 	body_marking_sets = list(
@@ -115,7 +115,7 @@
 		/datum/descriptor_choice/stature,
 		/datum/descriptor_choice/face,
 		/datum/descriptor_choice/face_exp,
-		/datum/descriptor_choice/skin_all,
+		/datum/descriptor_choice/skin_lamia,
 		/datum/descriptor_choice/voice,
 		/datum/descriptor_choice/prominent_one_wild,
 		/datum/descriptor_choice/prominent_two_wild,
