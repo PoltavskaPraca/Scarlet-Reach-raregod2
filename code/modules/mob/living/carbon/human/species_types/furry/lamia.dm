@@ -10,10 +10,9 @@
 	with the exception of Axians with whom they share their natural heartlands. Many a sailor has met their end at the claws of Lamias.<br>\
 	(+1 Strength, SPD cap, Longstrider)" // SMOKINGRAWOCB
 	default_color = "FFFFFF"
-	species_traits = list(EYECOLOR, LIPS, HAIR, LAMIAN_TAIL, OLDGREY, MUTCOLORS_PARTSONLY)
+	species_traits = list(EYECOLOR, LIPS, HAIR, LAMIAN_TAIL, OLDGREY, MUTCOLORS)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	possible_ages = ALL_AGES_LIST
-	use_skintones = TRUE
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi' // lips
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi' //lips
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -168,6 +167,9 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
+
+//<a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a> // how 2 change hands
+
 /*
 /datum/species/lamia/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -196,7 +198,7 @@
 	returned["mcolor3"] = main_color
 	return returned
 */
-/datum/species/lamia/get_skin_list()
+/datum/species/lamia/get_skin_list() // nothing ever happens
 	return list(
 		"Ghost" = SKIN_COLOR_GHOST,
 		"Grenzel Woods" = SKIN_COLOR_GRENZEL_WOODS,
@@ -214,7 +216,7 @@
 		"Ebon Coverts"	= SKIN_COLOR_EBON_COAST
 	)
 
-/datum/species/lamia/get_skin_list_tooltip()
+/datum/species/lamia/get_skin_list_tooltip() // nothing ever matters
 	return list(
 		"Ghost <span style='border: 1px solid #161616; background-color: #ffffff;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>ffffff</b>" = SKIN_COLOR_GHOST,
 		"Grenzel Woods <span style='border: 1px solid #161616; background-color: #fff0e9;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>fff0e9</b>" = SKIN_COLOR_GRENZEL_WOODS,

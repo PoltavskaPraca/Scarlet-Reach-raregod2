@@ -461,9 +461,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			if((LAMIAN_TAIL in pref_species.species_traits))
 
-				dat += "<b>Skin/scales color</b><a href='?_src_=prefs;preference=lamia_skin_color;task=input'>(?)</a>:</b><span style='border: 1px solid #161616; background-color: #[features["s_tone"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=s_tone;task=input'>Change </a><BR>"
-				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-//				dat += "<b>Skin/scales color #1:</b></b><a href='?_src_=prefs;preference=lamia_skin_color;task=input'>(?)</a><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+//				dat += "<b>Skin/scales color</b><a href='?_src_=prefs;preference=lamia_skin_color;task=input'>(?)</a>:</b><span style='border: 1px solid #161616; background-color: #[features["skin_tone"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=s_tone;task=input'>Change </a><BR>"
+//				dat += "<b>Mutant Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+				dat += "<b>Skin/scales color #1:</b></b><a href='?_src_=prefs;preference=lamia_skin_color;task=input'>(?)</a><span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 				dat += "<b>Feature Color #1:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
 				dat += "<b>Feature Color #2:</b><span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
 
