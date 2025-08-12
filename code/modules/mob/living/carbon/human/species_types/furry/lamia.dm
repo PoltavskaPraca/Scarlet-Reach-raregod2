@@ -213,7 +213,21 @@
 		"Etruscan Swamps" = SKIN_COLOR_ETRUSCAN_SWAMPS,
 		"Shalvine Forests" = SKIN_COLOR_SHALVINE_FORESTS,
 		"Lalvestine Thickets" = SKIN_COLOR_LALVE_STEPPES,
-		"Ebon Coverts"	= SKIN_COLOR_EBON_COAST
+		"Ebon Coverts"	= SKIN_COLOR_EBON_COAST,
+		"Ochre" = SKIN_COLOR_OCHRE,
+		"Meadow" = SKIN_COLOR_MEADOW,
+		"Olive" = SKIN_COLOR_OLIVE,
+		"Green" = SKIN_COLOR_GREEN,
+		"Moss" = SKIN_COLOR_MOSS,
+		"Taiga" = SKIN_COLOR_TAIGA,
+		"Bronze" = SKIN_COLOR_BRONZE,
+		"Red" = SKIN_COLOR_RED,
+		"Frost" = SKIN_COLOR_FROST,
+		"Abyss" = SKIN_COLOR_ABYSS,
+		"Abyssal" = SKIN_COLOR_ABYSSAL,
+		"Teal" = SKIN_COLOR_TEAL,
+		"Hadal" = SKIN_COLOR_HADAL,
+		"Bone" = SKIN_COLOR_BONE,
 	)
 
 /datum/species/lamia/get_skin_list_tooltip() // nothing ever matters
@@ -231,5 +245,19 @@
 		"Shalvine Forests <span style='border: 1px solid #161616; background-color: #ac8369;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>ac8369</b>" = SKIN_COLOR_SHALVINE_FORESTS,
 		"Lalvestine Thickets <span style='border: 1px solid #161616; background-color: #9c6f52;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>9c6f52</b>" = SKIN_COLOR_LALVE_STEPPES,
 		"Timberborn <span style='border: 1px solid #161616; background-color: #5d4c41;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>5d4c41</b>" = SKIN_COLOR_TIMBERBORN,
-		"Ebon Coverts <span style='border: 1px solid #161616; background-color: #4e3729;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>4e3729</b>"	= SKIN_COLOR_EBON_COAST
+		"Ebon Coverts <span style='border: 1px solid #161616; background-color: #4e3729;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>4e3729</b>"	= SKIN_COLOR_EBON_COAST,
+		"Ochre <span style='border: 1px solid #161616; background-color: #968127;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>968127</b>" = SKIN_COLOR_OCHRE,
+		"Meadow <span style='border: 1px solid #161616; background-color: #909630;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>909630</b>" = SKIN_COLOR_MEADOW,
+		"Olive <span style='border: 1px solid #161616; background-color: #6b8a08;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>6b8a08</b>" = SKIN_COLOR_OLIVE,
+		"Green <span style='border: 1px solid #161616; background-color: #4c6835;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>4c6835</b>" = SKIN_COLOR_GREEN,
+		"Moss <span style='border: 1px solid #161616; background-color: #43533e;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>43533e</b>" = SKIN_COLOR_MOSS,
+		"Taiga <span style='border: 1px solid #161616; background-color: #373f29;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>373f29</b>" = SKIN_COLOR_TAIGA,
+		"Bronze <span style='border: 1px solid #161616; background-color: #725237;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>725237</b>" = SKIN_COLOR_BRONZE,
+		"Red <span style='border: 1px solid #161616; background-color: #87312a;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>87312a</b>" = SKIN_COLOR_RED,
+		"Frost <span style='border: 1px solid #161616; background-color: #6486b0;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>6486b0</b>" = SKIN_COLOR_FROST,
+		"Abyss <span style='border: 1px solid #161616; background-color: #2a6986;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>2a6986</b>" = SKIN_COLOR_ABYSS,
+		"Abyssal <span style='border: 1px solid #161616; background-color: #22577a;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>22577a</b>" = SKIN_COLOR_ABYSSAL,
+		"Teal <span style='border: 1px solid #161616; background-color: #008080;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>008080</b>" = SKIN_COLOR_TEAL,
+		"Hadal <span style='border: 1px solid #161616; background-color: #24353d;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>24353d</b>" = SKIN_COLOR_HADAL,
+		"Bone <span style='border: 1px solid #161616; background-color: #e3dac9;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>e3dac9</b>" = SKIN_COLOR_BONE,
 	)
