@@ -252,6 +252,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/get_skin_list()
 	return GLOB.skin_tones
 
+/datum/species/proc/get_skin_list_tooltip()
+	return GLOB.skin_tones
+
 /datum/species/proc/get_hairc_list()
 	return GLOB.haircolor
 

@@ -9,12 +9,13 @@
 	of grand raids on coastal regions, for they have been terrorizing any race that has dared to settle near their waters. For this, they are widely shunned by the other races, \
 	with the exception of Axians with whom they share their natural heartlands. Many a sailor has met their end at the claws of Lamias.<br>\
 	(+1 Strength, SPD cap, Longstrider)" // SMOKINGRAWOCB
-	default_color = "444"
-	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAIR, LAMIAN_TAIL)
+	default_color = "FFFFFF"
+	species_traits = list(EYECOLOR, LIPS, HAIR, LAMIAN_TAIL, OLDGREY, MUTCOLORS_PARTSONLY)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	possible_ages = ALL_AGES_LIST
-	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
-	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fma.dmi'
+	use_skintones = TRUE
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi' // lips
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi' //lips
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	clothes_id = "lamia"
@@ -59,7 +60,7 @@
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/tail_feature/anthro,
-		/datum/customizer/organ/snout/anthro,
+		/datum/customizer/organ/snout/lamia,
 		/datum/customizer/organ/ears/elf,
 		/datum/customizer/organ/frills/anthro, //add elf ears
 		/datum/customizer/organ/testicles/anthro,
@@ -124,11 +125,11 @@
 /datum/species/lamia/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/lamia/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lamia/on_species_gain(mob/living/carbon/C, datum/species/old_species) // one of those auto-appends a dot at the end of player speech
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/lamia/on_species_loss(mob/living/carbon/C)
+/datum/species/lamia/on_species_loss(mob/living/carbon/C) // one of those auto-appends a dot at the end of player speech
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
@@ -167,3 +168,66 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
+/*
+/datum/species/lamia/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	var/main_color
+	var/random = rand(1,8)
+	//Choose from a variety of mostly brightish, animal, matching colors
+	switch(random)
+		if(1)
+			main_color = ORANGE_FUR
+		if(2)
+			main_color = LIGHTGREY_FUR
+		if(3)
+			main_color = DARKGREY_FUR
+		if(4)
+			main_color = LIGHTORANGE_FUR
+		if(5)
+			main_color = LIGHTBROWN_FUR
+		if(6)
+			main_color = WHITEBROWN_FUR
+		if(7)
+			main_color = DARKBROWN_FUR
+		if(8)
+			main_color = BLACK_FUR
+	returned["mcolor"] = main_color
+	returned["mcolor2"] = main_color
+	returned["mcolor3"] = main_color
+	return returned
+*/
+/datum/species/lamia/get_skin_list()
+	return list(
+		"Ghost" = SKIN_COLOR_GHOST,
+		"Grenzel Woods" = SKIN_COLOR_GRENZEL_WOODS,
+		"Dandelion Creek" = SKIN_COLOR_DANDELION_CREEK,
+		"Roseveil" = SKIN_COLOR_ROSEVEIL,
+		"Azuregrove" = SKIN_COLOR_AZUREGROVE,
+		"Arborshome" = SKIN_COLOR_ARBORSHOME,
+		"Almondvalle" = SKIN_COLOR_ALMONDVALLE,
+		"Walnut Woods" = SKIN_COLOR_WALNUT_WOODS,
+		"Timberborn" = SKIN_COLOR_TIMBERBORN,
+		"Lotus Coast" = SKIN_COLOR_LOTUS_COAST,
+		"Etruscan Swamps" = SKIN_COLOR_ETRUSCAN_SWAMPS,
+		"Shalvine Forests" = SKIN_COLOR_SHALVINE_FORESTS,
+		"Lalvestine Thickets" = SKIN_COLOR_LALVE_STEPPES,
+		"Ebon Coverts"	= SKIN_COLOR_EBON_COAST
+	)
+
+/datum/species/lamia/get_skin_list_tooltip()
+	return list(
+		"Ghost <span style='border: 1px solid #161616; background-color: #ffffff;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>ffffff</b>" = SKIN_COLOR_GHOST,
+		"Grenzel Woods <span style='border: 1px solid #161616; background-color: #fff0e9;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>fff0e9</b>" = SKIN_COLOR_GRENZEL_WOODS,
+		"Dandelion Creek <span style='border: 1px solid #161616; background-color: #ffe0d1;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>ffe0d1</b>" = SKIN_COLOR_DANDELION_CREEK,
+		"Roseveil <span style='border: 1px solid #161616; background-color: #fcccb3;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>fcccb3</b>" = SKIN_COLOR_ROSEVEIL,
+		"Azuregrove <span style='border: 1px solid #161616; background-color: #edc6b3;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>edc6b3</b>" = SKIN_COLOR_AZUREGROVE,
+		"Arborshome <span style='border: 1px solid #161616; background-color: #e2b9a3;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>e2b9a3</b>" = SKIN_COLOR_ARBORSHOME,
+		"Almondvalle <span style='border: 1px solid #161616; background-color: #c9a893;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>c9a893</b>" = SKIN_COLOR_ALMONDVALLE,
+		"Walnut Woods <span style='border: 1px solid #161616; background-color: #ba9882;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>ba9882</b>" = SKIN_COLOR_WALNUT_WOODS,
+		"Lotus Coast <span style='border: 1px solid #161616; background-color: #eae1C8;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>eae1C8</b>" = SKIN_COLOR_LOTUS_COAST,
+		"Etruscan Swamps <span style='border: 1px solid #161616; background-color: #d9a284;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>d9a284</b>" = SKIN_COLOR_ETRUSCAN_SWAMPS,
+		"Shalvine Forests <span style='border: 1px solid #161616; background-color: #ac8369;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>ac8369</b>" = SKIN_COLOR_SHALVINE_FORESTS,
+		"Lalvestine Thickets <span style='border: 1px solid #161616; background-color: #9c6f52;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>9c6f52</b>" = SKIN_COLOR_LALVE_STEPPES,
+		"Timberborn <span style='border: 1px solid #161616; background-color: #5d4c41;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>5d4c41</b>" = SKIN_COLOR_TIMBERBORN,
+		"Ebon Coverts <span style='border: 1px solid #161616; background-color: #4e3729;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <b>4e3729</b>"	= SKIN_COLOR_EBON_COAST
+	)
