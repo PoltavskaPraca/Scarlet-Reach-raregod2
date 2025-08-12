@@ -42,14 +42,10 @@
 		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
 		ORGAN_SLOT_EYES = /obj/item/organ/eyes,
 		ORGAN_SLOT_EARS = /obj/item/organ/ears,
-		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue/wild_tongue,
+		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue/lamia_forked,
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		//ORGAN_SLOT_TESTICLES = /obj/item/organ/testicles,
-		//ORGAN_SLOT_PENIS = /obj/item/organ/penis/knotted,
-		//ORGAN_SLOT_BREASTS = /obj/item/organ/breasts,
-		//ORGAN_SLOT_VAGINA = /obj/item/organ/vagina,
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
@@ -122,21 +118,21 @@
 		/datum/descriptor_choice/prominent_four_wild,
 	)
 
-/datum/species/anthromorph/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lamia/check_roundstart_eligible()
+	return TRUE
+
+/datum/species/lamia/qualifies_for_rank(rank, list/features)
+	return TRUE
+
+/datum/species/lamia/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-/datum/species/anthromorph/on_species_loss(mob/living/carbon/C)
+/datum/species/lamia/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 
-/datum/species/anthromorph/check_roundstart_eligible()
-	return TRUE
-
-/datum/species/anthromorph/qualifies_for_rank(rank, list/features)
-	return TRUE
-
-/datum/species/anthromorph/get_random_features()
+/datum/species/lamia/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
@@ -171,4 +167,3 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
-
