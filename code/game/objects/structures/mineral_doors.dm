@@ -67,7 +67,7 @@
 	if(door_opened)
 		playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 		if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-			user.visible_message(span_warning("[user] slams [src] shut with their tail!"), \
+			user.visible_message(span_warning("[user] slams [src] shut with [user.p_their()] tail!"), \
 				span_notice("I slam [src] shut with my tail!"))
 		else
 			user.visible_message(span_warning("[user] kicks [src] shut!"), \
@@ -82,7 +82,7 @@
 				if((prob(L.STASTR * 0.5) || kickthresh == 0) && (L.STASTR >= initial(kickthresh)))
 					playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 					if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-						user.visible_message(span_warning("[user] slams [src] open with their tail!"), \
+						user.visible_message(span_warning("[user] slams [src] open with [user.p_their()] tail!"), \
 							span_notice("I tailslam [src] open!"))
 					else
 						user.visible_message(span_warning("[user] kicks open [src]!"), \
@@ -101,7 +101,7 @@
 		else
 			playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 			if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				user.visible_message(span_warning("[user] slams [src] open with their tail!"), \
+				user.visible_message(span_warning("[user] slams [src] open with [user.p_their()] tail!"), \
 					span_notice("I tailslam [src] open!"))
 			else
 				user.visible_message(span_warning("[user] kicks open [src]!"), \

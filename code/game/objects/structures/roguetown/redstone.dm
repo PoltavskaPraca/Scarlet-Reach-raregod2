@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		var/mob/living/L = user
 		L.changeNext_move(CLICK_CD_MELEE)
 		if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-			user.visible_message("<span class='warning'>[user] slaps the lever with their tail!</span>")
+			user.visible_message("<span class='warning'>[user] slaps the lever with [user.p_their()] tail!</span>")
 		else
 			user.visible_message("<span class='warning'>[user] kicks the lever!</span>")
 		playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)

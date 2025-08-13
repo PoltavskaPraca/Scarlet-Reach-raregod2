@@ -423,13 +423,13 @@
 			str = "[m3] some shoes on [m2] feet!"
 		. += str
 	if(shoes && !(SLOT_SHOES in obscured) && TRAIT_LAMIAN_TAIL)
-		var/str = "[m3] [shoes.get_examine_string(user)] on [m2] tip of the tail. "
+		var/str = "[m3] [shoes.get_examine_string(user)] on the tip of [m2] tail. "
 		if(is_smart)
 			str += shoes.integrity_check()
 		else if(!is_stupid)
 			str += "[shoes.integrity_check()]"
 		else
-			str = "[m3] some shoes on [m2] tip of the tail!"
+			str = "[m3] some shoes on the tip of [m2] tail!"
 		. += str
 
 	//mask

@@ -109,7 +109,7 @@
 		if(icon_state == "[base_state]over")
 			playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 			if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				user.visible_message("<span class='warning'>[user] slams [src] with their tail!</span>", \
+				user.visible_message("<span class='warning'>[user] slams [src] with [user.p_their()] tail!</span>", \
 					"<span class='warning'>I slap [src] with my tail!</span>")
 			else
 				user.visible_message("<span class='warning'>[user] kicks [src]!</span>", \
@@ -118,7 +118,7 @@
 		if(prob(L.STASTR * 8))
 			playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 			if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				user.visible_message("<span class='warning'>[user] slaps [src] with their tail, toppling it!</span>", \
+				user.visible_message("<span class='warning'>[user] slaps [src] with [user.p_their()] tail, toppling it!</span>", \
 					"<span class='warning'>I slam [src], toppling it!</span>")
 			else
 				user.visible_message("<span class='warning'>[user] kicks over [src]!</span>", \
@@ -128,7 +128,7 @@
 		else
 			playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 			if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				user.visible_message("<span class='warning'>[user] slams [src] with their tail!</span>", \
+				user.visible_message("<span class='warning'>[user] slams [src] with [user.p_their()] tail!</span>", \
 					"<span class='warning'>I tailslam [src]!</span>")
 
 /obj/machinery/light/rogue/wallfire

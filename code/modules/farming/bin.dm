@@ -68,7 +68,7 @@
 		if(prob(L.STASTR * 8))
 			playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 			if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				user.visible_message(span_warning("[user] slaps [src] over with their tail!"), \
+				user.visible_message(span_warning("[user] slaps [src] over with [user.p_their()] tail!"), \
 					span_warning("I tailslap [src], toppling it over!"))
 			else
 				user.visible_message(span_warning("[user] kicks over [src]!"), \

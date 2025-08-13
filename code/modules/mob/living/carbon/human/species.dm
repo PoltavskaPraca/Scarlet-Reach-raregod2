@@ -1487,7 +1487,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						to_chat(user, span_danger("I kick [target.name], knocking them down!"))
 					else
 						target.visible_message(span_danger("[user.name] pulls [target.name] right down onto the ground!"),
-						span_danger("I'm pulled down by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
+						span_danger("I'm pulled down by [user.name]'s tail!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
 						to_chat(user, span_danger("I pull [target.name], right down onto the ground!"))
 					log_combat(user, target, "kicked", "knocking them down")
 
