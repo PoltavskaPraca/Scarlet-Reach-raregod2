@@ -187,7 +187,6 @@
 	/datum/species/moth,\
 	/datum/species/dracon,\
 	/datum/species/anthromorph,\
-	/datum/species/anthromorphsmall,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/kobold,\
@@ -212,12 +211,14 @@
 
 #define RACES_MANMADE \
 	/datum/species/golem/metal,\
+	/datum/species/golem/porcelain,\
 
 #define RACES_SECOND_CLASS \
     /datum/species/vulpkanin,\
     /datum/species/lupian,\
     /datum/species/moth,\
     /datum/species/anthromorph,\
+    /datum/species/anthromorphsmall,\
     /datum/species/tabaxi,\
     /datum/species/lizardfolk,\
     /datum/species/dracon,\
@@ -227,10 +228,10 @@
 	/datum/species/halforc,\
 
 #define RACES_WIDELY_REVILED \
-    /datum/species/anthromorphsmall,\
     /datum/species/kobold,\
     /datum/species/goblinp,\
-	/datum/species/dullahan,\
+    /datum/species/anthromorphsmall,\
+  	/datum/species/dullahan,\
 	/datum/species/lamia,\
 
 #define RACES_NOBILITY_ELIGIBLE_UP list(RACES_NOBILITY_ELIGIBLE)
@@ -272,6 +273,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/golem/metal,\
+	/datum/species/golem/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/lamia,\
 )
@@ -298,6 +300,7 @@
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/golem/metal,\
+	/datum/species/golem/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/lamia,\
 )
@@ -320,6 +323,7 @@
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/golem/metal,\
+	/datum/species/golem/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/lamia,\
 )
@@ -338,6 +342,7 @@
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/golem/metal,\
+	/datum/species/golem/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/lamia,\
 )
