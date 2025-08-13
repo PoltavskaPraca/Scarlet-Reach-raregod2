@@ -691,14 +691,24 @@
 	else if(HAS_TRAIT(src, TRAIT_PARALYSIS_R_LEG) && HAS_TRAIT(src, TRAIT_PARALYSIS_L_LEG))
 		examination += span_warning("[m1] PARAPLEGIC!")
 
-	var/static/list/body_zones = list(
+	var/static/list/body_zones
+	if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
+		body_zones = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
 		BODY_ZONE_L_ARM,
 		BODY_ZONE_R_ARM,
-		BODY_ZONE_L_LEG,
+		BODY_ZONE_LAMIAN_TAIL,
+		)
+	else
+		body_zones = list(
+		BODY_ZONE_HEAD,
+		BODY_ZONE_CHEST,
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_ARM,
 		BODY_ZONE_R_LEG,
-	)
+		BODY_ZONE_L_LEG,
+		)
 	for(var/body_zone in body_zones)
 		var/obj/item/bodypart/bodypart = get_bodypart(body_zone)
 		if(!bodypart)
