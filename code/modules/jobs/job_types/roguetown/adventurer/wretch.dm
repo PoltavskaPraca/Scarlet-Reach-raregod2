@@ -36,6 +36,13 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
+		H.change_stat("strength", 1)
+		H.change_stat("perception", 1)
+		H.change_stat("intelligence", 1)
+		H.change_stat("constitution", 1)
+		H.change_stat("endurance", 1)
+		H.change_stat("speed", 1)
+		H.change_stat("fortune", 1)
 
 		if(GLOB.adventurer_hugbox_duration)
 			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, adv_hugboxing_start)), 1)
