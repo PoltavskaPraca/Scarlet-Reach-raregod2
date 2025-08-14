@@ -106,6 +106,8 @@
 		I = l_grab
 	if(I)
 		used_limb = parse_zone(I.sublimb_grabbed)
+		if(used_limb == BODY_ZONE_R_LEG && islamia(target) || BODY_ZONE_L_LEG && islamia(target))
+			used_limb = "tail"
 
 	if(used_limb)
 		target.visible_message(span_danger("[src] grabs [target]'s [used_limb]."), \
@@ -125,6 +127,8 @@
 		I = user.l_grab
 	if(I)
 		used_limb = parse_zone(I.sublimb_grabbed)
+		if(used_limb == BODY_ZONE_R_LEG && islamia(src) || BODY_ZONE_L_LEG && islamia(src))
+			used_limb = "tail"
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		visible_message("<span class='danger'>[user] firmly grips [src]'s [used_limb]!</span>",
