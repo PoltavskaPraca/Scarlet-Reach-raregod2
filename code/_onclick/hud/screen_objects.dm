@@ -1013,7 +1013,7 @@
 		vis_contents -= hover_overlays_cache[hovering]
 		hovering = null
 
-/atom/movable/screen/zone_sel/proc/get_zone_at(icon_x, icon_y, gender = MALE)
+/atom/movable/screen/zone_sel/proc/get_zone_at(icon_x, icon_y, gender = MALE) // add lamia support tpye shit cock balls
 	if(gender == MALE)
 		switch(icon_y)
 			if(1 to 3)

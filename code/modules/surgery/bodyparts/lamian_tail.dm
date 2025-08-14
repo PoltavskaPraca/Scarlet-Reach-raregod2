@@ -12,8 +12,8 @@
 	px_x = -16
 	px_y = 12
 	max_stamina_damage = 50
-	subtargets = list(BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT)
-	grabtargets = list(BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT)
+	subtargets = list(BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_LAMIAN_TAIL)
+	grabtargets = list(BODY_ZONE_LAMIAN_TAIL)
 	dismember_wound = /datum/wound/dismemberment/lamian_tail
 
 	// Taur stuff!
@@ -67,7 +67,7 @@
 GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/lamian_tail))
 
 /obj/item/bodypart/lamian_tail/lamian_tail
-	name = "Lamian Tail"
+	name = "lamian tail"
 
 	offset_x = -16
 	taur_icon_state = "altnaga_s"

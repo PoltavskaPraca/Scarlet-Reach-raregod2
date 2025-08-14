@@ -49,5 +49,5 @@
 
 /datum/wound/dismemberment/lamian_tail
 	name = "tail stump"
-	check_name = span_danger("<B>TAUR STUMP</B>")
+	check_name = span_danger("<B>TAIL STUMP</B>")
 	mob_overlay = "dis_taur"
