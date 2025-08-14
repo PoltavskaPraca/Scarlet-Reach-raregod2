@@ -231,12 +231,6 @@
 				newamt--
 				BUFSPE++
 			STASPD = newamt
-			if(HAS_TRAIT(src, TRAIT_LAMIAN_TAIL)) // doesnt let you get buffed even by any SPD buffs duh
-				if(STASPD >= 12)
-					STASPD = 12
-				if(STASPD <= 9)
-					STASPD = 9
-
 			update_move_intent_slowdown()
 
 		if("fortune")

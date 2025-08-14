@@ -422,7 +422,7 @@
 		else
 			str = "[m3] some shoes on [m2] feet!"
 		. += str
-	if(shoes && !(SLOT_SHOES in obscured) && HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
+	else
 		var/str = "[m3] [shoes.get_examine_string(user)] on the tip of [m2] tail. "
 		if(is_smart)
 			str += shoes.integrity_check()
