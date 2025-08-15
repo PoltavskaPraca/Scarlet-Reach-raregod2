@@ -2593,7 +2593,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 //		character.ensure_not_taur()
 
 	if((LAMIAN_TAIL in pref_species.species_traits))
-		character.Lamiaze(/obj/item/bodypart/lamian_tail/lamian_tail, "#[tail_color]")
+		character.Lamiaze(/obj/item/bodypart/lamian_tail, "#[tail_color]")
 	else if(character_setup)
 		// This should only ever ~do~ anything for previews
 		character.ensure_not_lamia()

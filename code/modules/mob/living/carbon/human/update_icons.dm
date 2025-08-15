@@ -605,9 +605,6 @@ There are several things that need to be remembered:
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_SHOES]
 		inv.update_icon()
 
-//	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
-//	if(lamian_tail)
-//		return // taurs don't render shoes if they manage to even equip them
 
 	if(shoes)
 		shoes.screen_loc = rogueui_shoes					//move the item to the appropriate screen loc
@@ -1084,9 +1081,6 @@ There are several things that need to be remembered:
 	remove_overlay(TABARD_LAYER)
 	remove_overlay(UNDER_ARMOR_LAYER)
 
-//	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
-//	var/icon/c_mask = lamian_tail?.clip_mask
-
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_CLOAK]
 		inv.update_icon()
@@ -1207,9 +1201,6 @@ There are several things that need to be remembered:
 	remove_overlay(SHIRTSLEEVE_LAYER)
 	update_body_parts(TRUE)
 
-//	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
-//	var/icon/c_mask = lamian_tail?.clip_mask
-
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_SHIRT]
 		inv.update_icon()
@@ -1271,9 +1262,6 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_inv_armor()
 	remove_overlay(ARMOR_LAYER)
 	remove_overlay(ARMORSLEEVE_LAYER)
-
-//	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
-//	var/icon/c_mask = lamian_tail?.clip_mask
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_ARMOR]
@@ -1342,9 +1330,6 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_inv_pants()
 	remove_overlay(PANTS_LAYER)
 	remove_overlay(LEGSLEEVE_LAYER)
-
-//	var/obj/item/bodypart/lamian_tail/lamian_tail = get_lamian_tail()
-//	var/icon/c_mask = lamian_tail?.clip_mask
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_PANTS]
@@ -1559,7 +1544,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 */
-/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, female = FALSE, customi = null, sleeveindex, boobed_overlay = FALSE, var/icon/clip_mask = null)
+/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, female = FALSE, customi = null, sleeveindex, boobed_overlay = FALSE)
 	var/t_state
 	var/sleevejazz = sleevetype
 	if(override_state)
@@ -1682,9 +1667,6 @@ generate/load female uniform sprites matching all previously decided variables
 
 	standing.alpha = alpha
 	standing.color = color
-
-	if(istype(clip_mask)) //For taur bodies/tails clipping off parts of uniforms and suits.
-		standing.filters += filter(type = "alpha", icon = clip_mask)
 
 	return standing
 

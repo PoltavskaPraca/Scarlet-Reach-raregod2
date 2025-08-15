@@ -1,8 +1,8 @@
 // LAMIA
 /obj/item/bodypart/lamian_tail
-	name = "lamia"
+	name = "lamian tail"
 	desc = ""
-	icon = 'icons/mob/taurs.dmi'
+	icon = 'icons/mob/species/taurs.dmi'
 	icon_state = ""
 	attack_verb = list("hit")
 	max_damage = 300
@@ -21,25 +21,18 @@
 	var/offset_x = -16
 	// taur_icon_state sets which icon to use from icons/mob/taurs.dmi to render
 	// (we don't use icon_state to avoid duplicate rendering on dropped organs)
-	var/taur_icon_state = "naga_s"
+	var/taur_icon_state = "altnaga_s"
 
 	// We can Blend() a color with the base greyscale color, only some tails support this
-	var/has_tail_color = FALSE
+	var/has_tail_color = TRUE
 	var/color_blend_mode = BLEND_ADD
 	var/tail_color = null
-
-	// Clip Masks allow you to apply a clipping filter to some other parts of human rendering to avoid anything overlapping the tail.
-	// Specifically: update_inv_cloak, update_inv_shirt, update_inv_armor, and update_inv_pants.
-	var/icon/clip_mask_icon = 'icons/mob/taurs.dmi'
-	var/clip_mask_state = "taur_clip_mask_def"
-	// Instantiated at runtime for speed
-	var/tmp/icon/clip_mask
 
 /obj/item/bodypart/lamian_tail/New()
 	. = ..()
 
-	if(clip_mask_state)
-		clip_mask = icon(icon = (clip_mask_icon || icon), icon_state = clip_mask_state)
+///obj/item/bodypart/lamian_tail/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
+//	. = list()
 
 /obj/item/bodypart/lamian_tail/get_limb_icon(dropped, hideaux = FALSE)
 	// List of overlays
@@ -50,26 +43,20 @@
 		image_dir = SOUTH
 
 	// This section is based on Virgo's human rendering, there may be better ways to do this now
+//	var/icon/tail_s = image("icon" = icon, "icon_state" = taur_icon_state, "layer" = BODYPARTS_LAYER, "dir" = image_dir, "pixel_x" = -16) // why doesnt this work
 	var/icon/tail_s = new/icon("icon" = icon, "icon_state" = taur_icon_state, "dir" = image_dir)
 	if(has_tail_color)
 		tail_s.Blend(tail_color, color_blend_mode)
+	
+//	if(!skeletonized) // kill me obladaet
+//		var/list/marking_overlays = get_markings_overlays(override_color)
+//		if(marking_overlays)
+//			. += marking_overlays
 
 	var/image/working = image(tail_s)
 	// because these can overlap other organs, we need to layer slightly higher
-	working.layer = -FRONT_MUTATIONS_LAYER
+	working.layer = -BODYPARTS_LAYER // -FRONT_MUTATIONS_LAYER = tail renders over tits, -BODYPARTS_LAYER = tail renders underneath the tits, as it should
 	working.pixel_x = offset_x
 
 	. += working
 
-/*********************************/
-/* TAUR TYPES                    */
-/*********************************/
-GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/lamian_tail))
-
-/obj/item/bodypart/lamian_tail/lamian_tail
-	name = "lamian tail"
-
-	offset_x = -16
-	taur_icon_state = "altnaga_s"
-
-	has_tail_color = TRUE

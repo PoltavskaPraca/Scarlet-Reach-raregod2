@@ -33,9 +33,16 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	inherent_traits = list(TRAIT_LONGSTRIDER, TRAIT_WILD_EATER, TRAIT_LAMIAN_TAIL)
+	inherent_traits = list(TRAIT_LONGSTRIDER, TRAIT_WILD_EATER, TRAIT_LAMIAN_TAIL, TRAIT_CALTROPIMMUNE)
 	race_bonus = list(STAT_STRENGTH = 1, STAT_SPEED = -1) // SMOKINGRAWOCB
 	enflamed_icon = "widefire"
+/* I have no idea how rendering works and I can't figure it out!!
+	bodypart_overrides = list(
+		BODY_ZONE_LAMIAN_TAIL = /obj/item/bodypart/lamian_tail,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/lamian_tail,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/lamian_tail
+	)
+*/
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart,
@@ -73,6 +80,7 @@
 		/datum/body_marking_set/bellysocks,
 		/datum/body_marking_set/tiger,
 		/datum/body_marking_set/tiger_dark,  //Delinefortune: removed TWO /datum/body_marking/ because there supposed to be /datum/body_marking_set
+//		/datum/body_marking_set/lamian_tail // how the fuck do I get it to display over tail
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,
