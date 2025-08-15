@@ -60,7 +60,7 @@
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/tail_feature/anthro,
 		/datum/customizer/organ/snout/lamia,
-		/datum/customizer/organ/ears/elf,
+		/datum/customizer/organ/ears/lamia,
 		/datum/customizer/organ/frills/anthro, //add elf ears
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/lamia, // only tapered or hemi tapered or tentacle
