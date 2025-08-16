@@ -59,7 +59,10 @@
 	if(steps >= 6)
 		steps = 0
 
-	if(steps % 2)
+	if(steps % 2 && !islamia(LM))
+		return
+
+	if(steps % 2 && LM.m_intent == MOVE_INTENT_WALK && islamia(LM) || steps % 3 && LM.m_intent == MOVE_INTENT_RUN && islamia(LM))
 		return
 
 	if(steps != 0 && !LM.has_gravity(T)) // don't need to step as often when you hop around
@@ -152,6 +155,6 @@
 			if(!used_sound)
 				used_sound = last_sound
 			last_sound = used_sound
-			volume = rand(50, 100)
+			volume = rand(40, 85)
 			e_range = rand(1, 3)
 			playsound(T, used_sound, "vol" = volume, "extrarange" = e_range)
