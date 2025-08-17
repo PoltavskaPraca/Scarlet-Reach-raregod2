@@ -70,6 +70,8 @@
 		/datum/customizer/organ/ears/lamia,
 		/datum/customizer/organ/frills/anthro, //add elf ears
 		/datum/customizer/organ/testicles/anthro,
+		/datum/customizer/organ/wings/lamia,
+		/datum/customizer/organ/horns/lamia,
 		/datum/customizer/organ/penis/lamia, // only tapered or hemi tapered or tentacle
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/anthro,
