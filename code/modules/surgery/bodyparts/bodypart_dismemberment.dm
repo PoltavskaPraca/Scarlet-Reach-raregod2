@@ -298,7 +298,7 @@
 		C.update_inv_shoes()
 		C.update_inv_pants()
 
-/obj/item/bodypart/taur/drop_limb(special) //copypasta
+/obj/item/bodypart/lamian_tail/drop_limb(special) //copypasta
 	var/mob/living/carbon/C = owner
 	. = ..()
 	if(C && !special)

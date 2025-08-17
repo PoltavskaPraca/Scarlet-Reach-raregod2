@@ -38,7 +38,7 @@
 
 	return ..()
 
-/datum/surgery_step/add_lamian_tail/preop(mob/user, mob/living/target, target_zone, obj/item/bodypart/taur/bodypart, datum/intent/intent)
+/datum/surgery_step/add_lamian_tail/preop(mob/user, mob/living/target, target_zone, obj/item/bodypart/lamian_tail/bodypart, datum/intent/intent)
 	target_zone = BODY_ZONE_LAMIAN_TAIL
 
 	if(ismonkey(target) && bodypart.animal_origin != MONKEY_BODYPART)
@@ -58,7 +58,7 @@
 		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)]."))
 	return TRUE
 
-/datum/surgery_step/add_lamian_tail/success(mob/user, mob/living/target, target_zone, obj/item/bodypart/taur/bodypart, datum/intent/intent)
+/datum/surgery_step/add_lamian_tail/success(mob/user, mob/living/target, target_zone, obj/item/bodypart/lamian_tail/bodypart, datum/intent/intent)
 	target_zone = BODY_ZONE_LAMIAN_TAIL
 
 	if(bodypart.attach_limb(target) && bodypart.attach_wound)

@@ -300,7 +300,7 @@
 	)
 
 /datum/descriptor_choice/skin_lamia
-	name = "Skin/Fur/Scales"
+	name = "Skin & Scales"
 	default_descriptor = /datum/mob_descriptor/fur/plain
 	descriptors = list(
 		/datum/mob_descriptor/skin/normal,
