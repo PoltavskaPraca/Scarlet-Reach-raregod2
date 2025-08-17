@@ -132,9 +132,12 @@
 		BODY_ZONE_CHEST,
 		BODY_ZONE_R_ARM,
 		BODY_ZONE_L_ARM,
-		BODY_ZONE_R_LEG,
-		BODY_ZONE_L_LEG,
 	)
+	if(!islamia(src))
+		full += BODY_ZONE_R_LEG
+		full += BODY_ZONE_L_LEG
+	else
+		full += BODY_ZONE_LAMIAN_TAIL
 	for(var/zone in full)
 		if(get_bodypart(zone))
 			full -= zone

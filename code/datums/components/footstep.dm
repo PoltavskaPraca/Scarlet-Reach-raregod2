@@ -59,9 +59,6 @@
 	if(steps >= 6)
 		steps = 0
 
-//	if(steps % 2 && !islamia(LM))
-//		return
-
 	if(steps % 2 && LM.m_intent == MOVE_INTENT_WALK && islamia(LM) || steps % 3 && LM.m_intent == MOVE_INTENT_RUN && islamia(LM) || steps % 2 && !islamia(LM))
 		return
 
