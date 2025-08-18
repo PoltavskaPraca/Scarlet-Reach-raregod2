@@ -223,6 +223,7 @@
     /datum/species/lizardfolk,\
     /datum/species/dracon,\
     /datum/species/akula,\
+	/datum/species/lamia,\
 
 #define RACES_FEARED \
 	/datum/species/halforc,\
@@ -233,6 +234,7 @@
     /datum/species/anthromorphsmall,\
   	/datum/species/dullahan,\
 	/datum/species/lamia,\
+
 
 #define RACES_NOBILITY_ELIGIBLE_UP list(RACES_NOBILITY_ELIGIBLE)
 

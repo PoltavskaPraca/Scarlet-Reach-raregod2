@@ -4,7 +4,8 @@
 /datum/species/lamia
 	name = "Lamia"
 	id = "lamia"
-	desc = "The monstrous spawn of Abyssor, snake and humen conjoined together. While one could consider them to be of Dendor's, he had no hand in their creation. \
+	desc = "The monstrous spawn of Abyssor, snake and humen conjoined together, the deepkin and merfolk. \
+	Sirens, mermaids, nagas and many others fall into 'lamia' categorization. While one could consider them to be of Dendor's, he had no hand in their creation. \
 	Lamia are widespread in the southern coastal regions, where their tribes have settled in aeons ago, much of their written and oral history is filled with accounts \
 	of grand raids on coastal regions, for they have been terrorizing any race that has dared to settle near their waters. For this, they are widely shunned by the other races, \
 	with the exception of Axians with whom they share their natural heartlands. Many a sailor has met their end at the claws of Lamias.<br>\
@@ -51,6 +52,7 @@
 		ORGAN_SLOT_EARS = /obj/item/organ/ears,
 		ORGAN_SLOT_TONGUE = /obj/item/organ/tongue/lamia_forked,
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
+//		ORGAN_SLOT_TAIL = /obj/item/organ/tail/lamian_tail,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		)
@@ -70,6 +72,7 @@
 		/datum/customizer/organ/ears/lamia,
 		/datum/customizer/organ/frills/anthro, //add elf ears
 		/datum/customizer/organ/testicles/anthro,
+//		/datum/customizer/organ/tail/lamia,
 		/datum/customizer/organ/wings/lamia,
 		/datum/customizer/organ/horns/lamia,
 		/datum/customizer/organ/penis/lamia, // only tapered or hemi tapered or tentacle
@@ -128,6 +131,11 @@
 		/datum/descriptor_choice/prominent_four_wild,
 	)
 
+//	allowed_tail_types = list(
+//		/obj/item/bodypart/lamian_tail/lamian_tail,
+//		/obj/item/bodypart/lamian_tail/mermaid_tail,
+//	)
+//
 /datum/species/lamia/check_roundstart_eligible()
 	return TRUE
 
