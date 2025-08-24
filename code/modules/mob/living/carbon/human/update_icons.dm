@@ -1080,6 +1080,9 @@ There are several things that need to be remembered:
 	remove_overlay(TABARD_LAYER)
 	remove_overlay(UNDER_ARMOR_LAYER)
 
+	var/obj/item/bodypart/lamian_tail/tail = get_lamian_tail()
+	var/icon/c_mask = tail?.clip_mask
+
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_CLOAK]
 		inv.update_icon()
@@ -1098,12 +1101,12 @@ There are several things that need to be remembered:
 			if(dna.species.custom_clothes)
 				racecustom = dna.species.clothes_id
 			if(gender == FEMALE && !dna.species.use_m)
-				cloak_overlay = cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, boobed_overlay = has_boobed_overlay())
+				cloak_overlay = cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, boobed_overlay = has_boobed_overlay(), clip_mask = c_mask)
 			else
 				if(dna.species.use_f)
-					cloak_overlay = cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, boobed_overlay = has_boobed_overlay())
+					cloak_overlay = cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = TRUE, customi = racecustom, boobed_overlay = has_boobed_overlay(), clip_mask = c_mask)
 				else
-					cloak_overlay = cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom)
+					cloak_overlay = cloak.build_worn_icon(default_layer = CLOAK_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', female = FALSE, customi = racecustom, clip_mask = c_mask)
 
 			if(gender == MALE)
 				if(OFFSET_CLOAK in dna.species.offset_features)
@@ -1543,7 +1546,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 */
-/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, female = FALSE, customi = null, sleeveindex, boobed_overlay = FALSE)
+/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, female = FALSE, customi = null, sleeveindex, boobed_overlay = FALSE, var/icon/clip_mask = null)
 	var/t_state
 	var/sleevejazz = sleevetype
 	if(override_state)
@@ -1666,6 +1669,25 @@ generate/load female uniform sprites matching all previously decided variables
 
 	standing.alpha = alpha
 	standing.color = color
+
+	if(istype(clip_mask))
+		standing.filters += filter(type = "alpha", icon = clip_mask)
+/*
+		var/icon/clip_mask_icon = 'icons/mob/species/taurs.dmi'
+		var/clip_mask_state = "taur_clip_mask_def"
+		if(dir == NORTH)
+			clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state, dir=NORTH)
+			standing.filters += filter(type = "alpha", icon = clip_mask)
+		if(dir == SOUTH)
+			clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state, dir=SOUTH)
+			standing.filters += filter(type = "alpha", icon = clip_mask)
+		if(dir == WEST)
+			clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state, dir=WEST)
+			standing.filters += filter(type = "alpha", icon = clip_mask)
+		if(dir == EAST)
+			clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state, dir=EAST)
+			standing.filters += filter(type = "alpha", icon = clip_mask)
+*/
 
 	return standing
 

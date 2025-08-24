@@ -187,7 +187,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/ooc_notes
 	var/ooc_notes_display
 
-	//var/taur_type = null
+	var/tail_type = /obj/item/bodypart/lamian_tail/lamian_tail
 	var/tail_color = "ffffff"
 
 /datum/preferences/New(client/C)
@@ -251,7 +251,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	reset_all_customizer_accessory_colors()
 	randomize_all_customizer_accessories()
 	reset_descriptors()
-//	taur_type = null
+	tail_type = null
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
@@ -381,11 +381,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Bodytype: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
 					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
 
-			//if(LAZYLEN(pref_species.allowed_taur_types))
 			if((LAMIAN_TAIL in pref_species.species_traits))
-				//var/obj/item/bodypart/taur/T = taur_type
-				//var/name = ispath(T) ? T::name : "None"
-				//dat += "<b>Taur Body Type:</b> <a href='?_src_=prefs;preference=taur_type;task=input'>[name]</a><BR>"
+				var/obj/item/bodypart/lamian_tail/T = tail_type
+				var/name = ispath(T) ? T::name : "None"
+				dat += "<b>Tail Type:</b> <a href='?_src_=prefs;preference=tail_type;task=input'>[name]</a><BR>"
 				dat += "<b>Tail Color:</b><span style='border: 1px solid #161616; background-color: #[tail_color];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=tail_color;task=input'>Change</a><BR>"
 
 			// LETHALSTONE EDIT BEGIN: add voice type prefs
@@ -1556,28 +1555,25 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						voice_type = voicetype_input
 						to_chat(user, "<font color='red'>Your character will now vocalize with a [lowertext(voice_type)] affect.</font>")
 
-//				if("taur_type")
-//					var/list/species_taur_list = pref_species.get_taur_list()
-//					if(!LAZYLEN(species_taur_list))
-//						taur_type = null
-//						to_chat(user, span_bad("There are no available taur bodies for this species."))
-//						return
-//
-//					var/list/taur_selection = list("None")
-//					for(var/obj/item/bodypart/taur/tt as anything in pref_species.get_taur_list())
-//						taur_selection[tt::name] = tt
-//
-//					var/new_taur_type = input(user, "Choose your character's taur body", "Taur Body") as null|anything in taur_selection
-//					if(!new_taur_type)
-//						return
-//
-//					if(new_taur_type == "None")
-//						taur_type = null
-//					else
-//						taur_type = taur_selection[new_taur_type]
-//
-//					var/obj/item/bodypart/taur/tt = taur_type
-//					to_chat(user, span_red("Your character now has [tt ? tt::name : "no taurtype."]."))
+				if("tail_type")
+					var/list/species_tail_list = pref_species.get_tail_list()
+					if(!LAZYLEN(species_tail_list))
+						tail_type = /obj/item/bodypart/lamian_tail/lamian_tail
+						to_chat(user, span_bad("There are no available tail types for this species."))
+						return
+
+					var/list/tail_selection = list()
+					for(var/obj/item/bodypart/lamian_tail/tt as anything in pref_species.get_tail_list())
+						tail_selection[tt::name] = tt
+
+					var/new_tail_type = input(user, "Choose your character's tail type", "Tail Type") as null|anything in tail_selection
+					if(!new_tail_type)
+						return
+
+					tail_type = tail_selection[new_tail_type]
+
+					var/obj/item/bodypart/lamian_tail/tt = tail_type
+					to_chat(user, span_red("Your character now has [tt ? tt::name : "no tailtype."]."))
 
 				if("faith")
 					var/list/faiths_named = list()
@@ -2586,14 +2582,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			for(var/X in L)
 				ADD_TRAIT(character, curse2trait(X), TRAIT_GENERIC)
 
-//	if(taur_type)
-//		character.Taurize(taur_type, "#[taur_color]")
-//	else if(character_setup)
-//		// This should only ever ~do~ anything for previews
-//		character.ensure_not_taur()
-
 	if((LAMIAN_TAIL in pref_species.species_traits))
-		character.Lamiaze(/obj/item/bodypart/lamian_tail, "#[tail_color]")
+		character.Lamiaze(tail_type, "#[tail_color]")
 	else if(character_setup)
 		// This should only ever ~do~ anything for previews
 		character.ensure_not_lamia()

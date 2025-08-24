@@ -272,7 +272,7 @@
 	regenerate_icons()
 	set_resting(FALSE)
 
-/mob/living/carbon/proc/Lamiaze(taur_type = /obj/item/bodypart/lamian_tail, color = "#ffffff")
+/mob/living/carbon/proc/Lamiaze(tail_type = /obj/item/bodypart/lamian_tail, color = "#FFFFFF")
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/O = X
 		// drop taur tails too
@@ -280,7 +280,7 @@
 			O.drop_limb(1)
 			qdel(O)
 
-	var/obj/item/bodypart/lamian_tail/T = new taur_type()
+	var/obj/item/bodypart/lamian_tail/T = new tail_type()
 	T.tail_color = color
 	T.attach_limb(src)
 

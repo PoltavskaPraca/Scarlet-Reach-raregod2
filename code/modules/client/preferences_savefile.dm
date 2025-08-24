@@ -466,6 +466,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["voice_type"]			>> voice_type
 	S["nickname"]			>> nickname
 	S["highlight_color"]	>> highlight_color
+	S["tail_type"]			>> tail_type
 	S["tail_color"]			>> tail_color
 
 /datum/preferences/proc/load_character(slot)
@@ -685,6 +686,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
 	WRITE_FILE(S["nickname"]			, nickname)
 	WRITE_FILE(S["highlight_color"]		, highlight_color)
+	WRITE_FILE(S["tail_type"]			, tail_type)
 	WRITE_FILE(S["tail_color"]			, tail_color)
 
 	//Custom names

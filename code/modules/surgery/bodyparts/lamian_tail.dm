@@ -21,15 +21,47 @@
 	var/offset_x = -16
 	// taur_icon_state sets which icon to use from icons/mob/taurs.dmi to render
 	// (we don't use icon_state to avoid duplicate rendering on dropped organs)
-	var/taur_icon_state = "altnaga_s"
+	var/tail_icon_state
 
 	// We can Blend() a color with the base greyscale color, only some tails support this
 	var/has_tail_color = TRUE
 	var/color_blend_mode = BLEND_ADD
 	var/tail_color = null
 
+	var/icon/clip_mask_icon = 'icons/mob/species/taurs_clipmasks_64.dmi'
+	var/clip_mask_state
+	var/icon/clip_mask = null
+
 /obj/item/bodypart/lamian_tail/New()
 	. = ..()
+
+	if(clip_mask_state)
+		clip_mask = icon(icon = clip_mask_icon, icon_state = clip_mask_state)
+/*
+	if(clip_mask_state)
+
+		if(src.dir == SOUTH)
+			clip_mask_state = clip_mask_state_SOUTH
+		if(src.dir == NORTH)
+			clip_mask_state = clip_mask_state_NORTH
+		if(src.dir == WEST)
+			clip_mask_state = clip_mask_state_WEST
+		if(src.dir == EAST)
+			clip_mask_state = clip_mask_state_EAST
+
+		if(src.dir == SOUTH)
+			var/image_dir = SOUTH
+			clip_mask = new/icon("icon" = clip_mask_icon, "icon_state" = clip_mask_state, "dir" = image_dir)
+		if(src.dir == NORTH)
+			var/image_dir = NORTH
+			clip_mask = new/icon("icon" = clip_mask_icon, "icon_state" = clip_mask_state, "dir" = image_dir)
+		if(src.dir == WEST)
+			var/image_dir = WEST
+			clip_mask = new/icon("icon" = clip_mask_icon, "icon_state" = clip_mask_state, "dir" = image_dir)
+		if(src.dir == WEST)
+			var/image_dir = WEST
+			clip_mask = new/icon("icon" = clip_mask_icon, "icon_state" = clip_mask_state, "dir" = image_dir)
+*/
 
 ///obj/item/bodypart/lamian_tail/get_specific_markings_overlays(list/specific_markings, aux = FALSE, mob/living/carbon/human/human_owner, override_color)
 //	. = list()
@@ -44,7 +76,7 @@
 
 	// This section is based on Virgo's human rendering, there may be better ways to do this now
 //	var/icon/tail_s = image("icon" = icon, "icon_state" = taur_icon_state, "layer" = BODYPARTS_LAYER, "dir" = image_dir, "pixel_x" = -16) // why doesnt this work
-	var/icon/tail_s = new/icon("icon" = icon, "icon_state" = taur_icon_state, "dir" = image_dir)
+	var/icon/tail_s = new/icon("icon" = icon, "icon_state" = tail_icon_state, "dir" = image_dir)
 	if(has_tail_color)
 		tail_s.Blend(tail_color, color_blend_mode)
 	
@@ -60,3 +92,20 @@
 
 	. += working
 
+GLOBAL_LIST_INIT(tail_types, subtypesof(/obj/item/bodypart/lamian_tail))
+
+/obj/item/bodypart/lamian_tail/lamian_tail
+	name = "lamian tail"
+
+	offset_x = -16
+	tail_icon_state = "og_lamia_tail"
+	clip_mask_state = "og_lamia_tail_clipmask"
+	has_tail_color = TRUE
+
+/obj/item/bodypart/lamian_tail/mermaid_tail
+	name = "mermaid tail"
+
+	offset_x = -16
+	tail_icon_state = "og_mermaid_tail"
+	clip_mask_state = "og_mermaid_tail_clipmask"
+	has_tail_color = TRUE

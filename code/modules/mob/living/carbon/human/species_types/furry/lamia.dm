@@ -18,8 +18,8 @@
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi' //lips
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
-	clothes_id = "lamia"
-	custom_clothes = TRUE
+//	clothes_id = "lamia"
+//	custom_clothes = TRUE
 	soundpack_m = /datum/voicepack/male
 	soundpack_f = /datum/voicepack/female
 	offset_features = list(
@@ -131,11 +131,11 @@
 		/datum/descriptor_choice/prominent_four_wild,
 	)
 
-//	allowed_tail_types = list(
-//		/obj/item/bodypart/lamian_tail/lamian_tail,
-//		/obj/item/bodypart/lamian_tail/mermaid_tail,
-//	)
-//
+	allowed_tail_types = list(
+		/obj/item/bodypart/lamian_tail/lamian_tail,
+		/obj/item/bodypart/lamian_tail/mermaid_tail,
+	)
+
 /datum/species/lamia/check_roundstart_eligible()
 	return TRUE
 
